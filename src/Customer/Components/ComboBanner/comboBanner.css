@@ -1,0 +1,115 @@
+/* Combo Banner Container Styling */
+.combo-banner-container {
+    position: relative;
+    width: 100%; /* Full width container */
+    overflow: hidden; /* Hide overflow */
+  }
+  
+  .combo-banner-carousel .carousel-item {
+    transition: opacity 1s ease-in-out; /* Crossfade transition */
+  }
+  
+  .combo-banner-image {
+    border-radius: 1rem; /* Curved borders */
+    height: 8rem; /* Fixed height */
+    object-fit: cover; /* Ensure image covers the area */
+  }
+  
+  /* Hide default indicators and controls */
+  .carousel-indicators {
+    display: none !important;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+  
+  /* Offcanvas Container Styling */
+  .offcanvas-bottom {
+    height: 90vh; /* Set height to 90% of the viewport height */
+    max-height: 90vh; /* Ensure it doesn't exceed 90% of the viewport height */
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Fixed positioning for bottom placement */
+    bottom: 0; /* Align it to the bottom of the viewport */
+    width: 100%; /* Full width */
+    border-top-left-radius:2rem ;
+    border-top-right-radius:2rem ;
+  }
+  
+  .offcanvas-bottom .offcanvas-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+  
+    padding: 0; /* Remove default padding */
+  }
+  
+  .offcanvas-bottom .offcanvas-body img {
+    width: 100%; /* Full width of the container */
+    height: 15rem; /* Fixed height */
+    object-fit: cover; /* Ensure image covers the area */
+   
+  }
+  
+  .offcanvas-bottom .offcanvas-header {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #000;
+  }
+  
+  .comboTitleContainer {
+    background-color: #ddd;
+    padding: 0.5rem; /* Add some padding for better spacing */
+  }
+  
+  .comboTitle {
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Additional Styling for Combo Details */
+  .offcanvas-body > div {
+    text-align: center; /* Center align the text */
+  }
+  
+  .offcanvas-body h5,
+  .offcanvas-body h4 {
+    margin: 0.5rem 0; /* Add margin for spacing between elements */
+  }
+  
+.offcanvas.offcanvas-bottom{
+    height: 80%;
+}
+ 
+
+
+.combo-items-table {
+    width: 110%; /* Increased width */
+    border-collapse: collapse;
+    margin-top: 1rem;
+    /* table-layout: fixed; Ensure table layout is fixed to handle wider content */
+}
+
+.combo-items-table th, .combo-items-table td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.combo-items-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-align: center;
+}
+
+.combo-items-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

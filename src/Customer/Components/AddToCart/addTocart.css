@@ -1,0 +1,26 @@
+.cart-table-container {
+    margin-top: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+}
+
+.cart-table td {
+    text-align: center;
+}
+
+.cart-table td button {
+    margin: 0 2px;
+}

@@ -1,0 +1,21 @@
+.bg-success {
+  background-color: #2f6b2a !important; /* Green */
+  color: #fff !important;
+
+}
+
+.bg-danger {
+  background-color: #792325 !important; /* Red */
+  color: #fff !important;
+}
+
+.text-light {
+  color: #f8f9fa !important; /* Light text color for contrast */
+}
+.order-head{
+  width: 100%;
+  text-align: center;
+}
+.order-cnt{
+  text-align: center;
+}

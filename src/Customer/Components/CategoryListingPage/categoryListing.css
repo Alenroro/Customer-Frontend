@@ -1,0 +1,59 @@
+/* Container for scrolling */
+.scroll-container {
+    width: 100vw;
+    height: auto; /* Adjusted for better fit */
+    overflow: hidden; /* Hide scrollbar */
+    position: relative;
+    touch-action: pan-y; /* Enable vertical scrolling */
+    cursor: grab; /* Default cursor style */
+}
+
+/* Content inside the scroll container */
+.scroll-content {
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    white-space: nowrap;
+    padding: 10px; /* Optional: add some padding */
+}
+
+/* Individual items within the scroll content */
+.item {
+    flex: 0 0 auto;
+    width: 120px; /* Adjust item width as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-right: 20px; /* Space between items */
+    background-color: white;
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Padding inside item */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+}
+
+.item:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
+
+/* Image styling */
+.category-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-radius: 50%; /* Rounded corners for images */
+    margin-bottom: 10px; /* Space between image and text */
+}
+
+/* Text below the image */
+.category-name {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    color: #333; /* Dark text color */
+    font-family: 'Times New Roman' ;
+   
+}

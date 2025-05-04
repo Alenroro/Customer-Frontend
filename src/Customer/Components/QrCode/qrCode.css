@@ -1,0 +1,14 @@
+/* Add this to your CSS file if you need custom styling */
+
+.qr-code-item {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.qr-code-item p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}

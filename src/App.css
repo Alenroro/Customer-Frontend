@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* App.css */
+
+/* Ensure the body and html take the full height of the viewport and hide overflow */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Hide horizontal overflow */
+  }
+  
+  /* Apply to root element to ensure the container fits within the viewport */
+  #root {
+    overflow-x: hidden; /* Hide horizontal overflow for the main app container */
+  }
+  
+  /* Optional: Apply to main container if needed */
+  .main-container {
+    max-width: 100vw; /* Prevent content from exceeding viewport width */
+    overflow-x: hidden; /* Hide horizontal overflow */
+  }
+  
+  /* Optional: Apply to specific components or sections */
+  .no-scroll {
+    overflow-x: hidden; /* Hide horizontal overflow for specific components */
+  }
+  

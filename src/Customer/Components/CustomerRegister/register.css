@@ -1,0 +1,62 @@
+/* register.css */
+.signup-main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, hwb(0 95% 5%), #f7ebeb);
+}
+
+.signup-section {
+    width: 100%;
+    max-width: 500px;
+}
+
+.signup-card {
+    background-color: #1f1f1f; /* Dark background for the card */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.form-label {
+    color: #cccccc;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #ffffff;
+}
+
+.form-control::placeholder {
+    color: #999;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-link {
+    color: #007bff;
+}
+
+.btn-link:hover {
+    color: #0056b3;
+}

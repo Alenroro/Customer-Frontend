@@ -1,0 +1,536 @@
+/* Container for carousel images */
+* {
+  padding: 0;
+  margin: 0;
+}
+.carousel-container {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Food images in the carousel */
+.food-image {
+  height: 100%; /* Maintain aspect ratio */
+  border-radius: 10px; /* Curved borders */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .food-image {
+    height: 150px; /* Smaller height for smaller screens */
+  }
+
+  .category-container {
+    padding: 0.5rem;
+  }
+
+  .category-row {
+    width: calc(100% * 3); /* Increase width for more visible items */
+    animation: scroll-left 30s linear infinite; /* Slower animation for smaller screens */
+  }
+
+  .category-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .category-item {
+    margin-right: 0.5rem;
+  }
+
+  .category-name {
+    font-size: 12px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .food-image {
+    height: 120px; /* Smaller height for very small screens */
+  }
+
+  .category-container {
+    padding: 0.25rem; /* Minimal padding */
+  }
+
+  .category-row {
+    width: calc(100% * 4); /* Increase width for more visible items */
+    animation: scroll-left 40s linear infinite; /* Even slower animation for very small screens */
+  }
+
+  .category-image {
+    height: 120px;
+    width: 120px;
+  }
+
+  .category-item {
+    margin-right: 0.25rem;
+  }
+
+  .category-name {
+    font-size: 10px; /* Smaller font size */
+  }
+}
+
+/* Container for food items */
+.food-items-container,
+.combo-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 16px; /* Space between cards */
+  justify-content: center; /* Center-aligns the cards horizontally */
+  padding: 20px; /* Padding around the container */
+  box-sizing: border-box; /* Includes padding in the element's total width and height */
+}
+
+/* Each card */
+.food-item-card,
+.combo-item-card {
+  width: 200px; /* Fixed width for the card */
+  height: 300px; /* Fixed height for the card */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  border: 1px solid #ddd; /* Light border around the card */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevents content from overflowing */
+  background-color: #fffdfdbb; /* Background color for the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  color: black;
+  margin: 0 auto; /* Center the card horizontally within its column */
+}
+
+/* Image within the card */
+.food-item-image {
+  width: 100%; /* Full width of the card */
+  height: 60%; /* Adjust height to fit card */
+  object-fit: cover; /* Cover the area without distortion */
+}
+
+/* Body of the card */
+.card-body {
+  display: flex;
+  flex-direction: column; /* Stack text vertically */
+  justify-content: center; /* Center-align text vertically */
+  align-items: center; /* Center-align text horizontally */
+  text-align: center; /* Center-align text */
+  padding: 10px; /* Padding inside the card body */
+  height: 40%; /* Adjust body height to fit card */
+  box-sizing: border-box; /* Includes padding in the element's total width and height */
+}
+
+/* Title of the card */
+.card-title {
+  font-size: 1.1rem; /* Slightly larger font for the title */
+  margin-bottom: 0.5rem; /* Space below the title */
+  color: black;
+}
+
+/* Text within the card */
+.card-text {
+  font-size: 0.9rem; /* Smaller font for the price */
+  color: #555; /* Dark gray color for the text */
+}
+
+/* Hover effects for the card */
+.food-item-card:hover,
+.combo-item-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+/* Hover effects for the image */
+.food-item-image:hover {
+  opacity: 0.9; /* Slightly dim the image on hover */
+}
+
+/* Responsive styles for very small screens */
+@media (max-width: 576px) {
+  .food-items-container {
+    gap: 8px; /* Reduced gap between cards on small screens */
+    padding: 10px; /* Reduced padding on small screens */
+  }
+
+  .food-item-card {
+    width: 200px; /* Smaller card width for small screens */
+    height: 400px; /* Adjust card height for small screens */
+  }
+
+  .food-item-image {
+    width: 280px;
+    height: 50%; /* Adjust image height within the card */
+  }
+}
+/* Loader styles */
+.loader-container {
+  position: fixed; /* Cover the full page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Slightly transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it is on top of all other content */
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Container for category images */
+.category-container {
+  padding: 1rem;
+  overflow: hidden; /* Hide overflow to prevent scrolling */
+  position: relative; /* Needed for the carousel controls */
+  padding: 10%;
+}
+
+/* Carousel container for category images */
+.category-carousel {
+  display: flex;
+  overflow: hidden; /* Hide overflow for smooth scrolling */
+}
+
+/* Flexbox layout for category images */
+.category-row {
+  display: flex;
+  flex-direction: row; /* Ensure items are in a row */
+  gap: 1rem; /* Space between items */
+  transition: transform 0.5s ease; /* Smooth transition for movement */
+}
+
+/* Individual category item */
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0; /* Prevent items from shrinking */
+  width: 200px; /* Fixed width for each item */
+  margin-right: 1rem; /* Space between items */
+}
+
+/* Styling for category images */
+.category-image {
+  height: 200px;
+  width: 200px;
+  object-fit: cover; /* Ensure image covers the dimensions without distortion */
+  border-radius: 50%; /* Rounded corners */
+}
+
+/* Styling for category names */
+.category-name {
+  margin-top: 0.5rem; /* Space between image and name */
+  font-size: 20px; /* Font size */
+  font-weight: bold;
+  text-align: center;
+  color: #333; /* Text color */
+}
+
+/* Button styles */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(150%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .category-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .category-item {
+    width: 150px;
+    margin-right: 0.5rem;
+  }
+
+  .category-name {
+    font-size: 12px; /* Smaller font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .category-image {
+    height: 120px;
+    width: 120px;
+  }
+
+  .category-item {
+    width: 120px;
+    margin-right: 0.25rem;
+  }
+
+  .category-name {
+    font-size: 10px; /* Smaller font size */
+  }
+}
+
+/* Sticky Dropdown Styles */
+.sticky-dropdown {
+  position: fixed;
+  bottom: 50px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.food-item-card {
+  transition: filter 0.3s ease;
+  position: relative;
+}
+
+.food-item-card.blur {
+  filter: blur(0.5px);
+  pointer-events: none; /* Disables all interactions */
+}
+
+/* Optional: To indicate disabled state visually */
+.food-item-card.blur .food-item-image {
+  opacity: 0.5;
+}
+
+.section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.content-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #333;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.price {
+  font-size: 14px;
+  color: #666;
+}
+
+.content-right {
+  flex: 1;
+  text-align: right;
+}
+
+.right-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* New Css */
+.food-items-container,
+.combo-container {
+  padding: 10px;
+}
+.combo-container h2,
+.food-items-container h2 {
+  width: 100%;
+}
+.food-item-card,
+.combo-item-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 10px;
+  height: auto;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.content-left {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-details,
+.combo-details {
+  margin-bottom: 10px;
+}
+
+.additional-content {
+  flex: 1;
+}
+
+.content-right {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.right-image {
+  width: 150px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.button,
+.add-button {
+  background-color: #0c6300;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
+.count {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+.add-button {
+  background-color: #0c6300;
+}
+
+.add-button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.item-details h3,
+.combo-details h3 {
+  font-weight: bolder;
+  font-size: large;
+
+  font-family: "Times New Roman";
+}
+.item-details h4,
+.combo-details h4 {
+  font-weight: bold;
+  font-size: large;
+
+  font-family: monospace;
+  color: #333;
+}
+
+/* Bottom Navbar Styles */
+.bottom-navbar {
+  position: fixed;
+  bottom: 60px;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.left {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  background-color: #ff6f61;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Disabled Button Styling */
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  position: fixed;
+  bottom: 20%;
+  right: 10%;
+  z-index: 1100;
+}

@@ -1,0 +1,32 @@
+/* Custom modal styles */
+.custom-modal .modal-dialog {
+    max-width: 90%; /* Adjust width as needed */
+    margin: 1.75rem auto; /* Center modal horizontally with margin */
+}
+
+.custom-modal .modal-content {
+    height: 70vh; /* Set the height of the modal content to be 80% of viewport height */
+    display: flex; /* Use flexbox for vertical alignment */
+    flex-direction: column; /* Stack content vertically */
+}
+
+.custom-modal .modal-body {
+    height: calc(100% - 80px); /* Adjust height based on header and footer */
+    padding: 10px; /* Padding inside the modal body */
+    overflow-y: hidden; /* Add scroll if content overflows */
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
+    
+}
+
+.custom-modal .modal-header,
+.custom-modal .modal-footer {
+    flex-shrink: 0; /* Prevent header and footer from shrinking */
+}
+
+.custom-modal .modal-header {
+    margin-bottom: 0px; /* Space below header */
+}
+
+.custom-modal .modal-footer {
+    margin-top: 10px; /* Space above footer */
+}
