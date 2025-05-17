@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Carousel from 'react-bootstrap/Carousel';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import './comboBanner.css';
-import { setUpdatedItems } from '../../../SlicesFolder/Slices/menuSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Carousel from "react-bootstrap/Carousel";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import "./comboBanner.css";
+import { setUpdatedItems } from "../../../SlicesFolder/Slices/menuSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const ComboBanner = () => {
   const dispatch = useDispatch();
@@ -12,25 +12,26 @@ const ComboBanner = () => {
   const [selectedCombo, setSelectedCombo] = useState(null);
   const [comboData, setComboData] = useState([]);
 
-  const { updatedItems = [] } = useSelector(state => state.menu);
-  const {selectedTable } = useSelector(state => state.menu);
+  const { updatedItems = [] } = useSelector((state) => state.menu);
+  const { selectedTable } = useSelector((state) => state.menu);
 
   useEffect(() => {
     const fetchBannerImages = async () => {
       try {
-        const { data } = await axios.get('https://qr-backend-application.onrender.com/combos/combo');
-       
-        const comboInfo = data.map(file => ({
-          imageUrl: `https://qr-backend-application.onrender.com/combos/image/${file.comboImage}`,
+        const { data } = await axios.get(
+          "https://qr-backend-server.onrender.com/combos/combo"
+        );
+
+        const comboInfo = data.map((file) => ({
+          imageUrl: `https://qr-backend-server.onrender.com/combos/image/${file.comboImage}`,
           comboName: file.comboName,
           comboItems: file.comboItems,
           comboPrice: file.comboPrice,
           comboCategoryName: file.comboCategoryName,
           comboType: file.comboType,
-          comboId: file._id
+          comboId: file._id,
         }));
 
-      
         setComboData(comboInfo);
       } catch (error) {
         console.error("Error fetching banner images: ", error);
@@ -41,7 +42,6 @@ const ComboBanner = () => {
   }, []);
 
   const handleShowOffcanvas = (combo) => {
-    
     setSelectedCombo({ ...combo });
     setShowOffcanvas(true);
   };
@@ -51,12 +51,14 @@ const ComboBanner = () => {
   const handleAddComboToCart = () => {
     if (!selectedCombo) return;
 
-    const existingCombo = updatedItems.find(item => item.comboId === selectedCombo.comboId);
-    
+    const existingCombo = updatedItems.find(
+      (item) => item.comboId === selectedCombo.comboId
+    );
+
     let newItems;
-    
+
     if (existingCombo) {
-      newItems = updatedItems.map(item =>
+      newItems = updatedItems.map((item) =>
         item.comboId === selectedCombo.comboId
           ? { ...item, count: item.count + 1 }
           : item
@@ -72,8 +74,8 @@ const ComboBanner = () => {
           price: selectedCombo.comboPrice,
           typeId: selectedCombo.comboId,
           count: 1,
-          tableNumber:selectedTable
-        }
+          tableNumber: selectedTable,
+        },
       ];
     }
 
@@ -84,7 +86,7 @@ const ComboBanner = () => {
   return (
     <div className="combo-banner-container">
       {comboData.length > 0 ? (
-        <Carousel 
+        <Carousel
           fade
           interval={3000}
           controls={false}
@@ -115,18 +117,18 @@ const ComboBanner = () => {
           className="offcanvas-bottom"
         >
           <Offcanvas.Header closeButton>
-            <h3 className='comboTitle'>{selectedCombo.comboName}</h3>
+            <h3 className="comboTitle">{selectedCombo.comboName}</h3>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <div>
-              <img 
-                src={selectedCombo.imageUrl} 
+              <img
+                src={selectedCombo.imageUrl}
                 alt="Expanded Banner"
                 className="selected-combo-image"
               />
             </div>
-            <br/>
-            
+            <br />
+
             <div>
               <table className="combo-items-table">
                 <thead>
@@ -145,8 +147,8 @@ const ComboBanner = () => {
                 </tbody>
               </table>
               <h4>Combo Price: ₹{selectedCombo.comboPrice}</h4>
-              <button 
-                className="add-combo-button" 
+              <button
+                className="add-combo-button"
                 onClick={handleAddComboToCart}
               >
                 Add Combo

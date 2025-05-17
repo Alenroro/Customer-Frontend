@@ -121,11 +121,11 @@ const Menu = () => {
     const fetchBannerImages = async () => {
       try {
         const response = await axios.get(
-          "https://qr-backend-application.onrender.com/banner/banners"
+          "https://qr-backend-server.onrender.com/banner/banners"
         );
         const urls = response.data.map(
           (file) =>
-            `https://qr-backend-application.onrender.com/banner/image/${file.fileId}`
+            `https://qr-backend-server.onrender.com/banner/image/${file.fileId}`
         );
         dispatch(setImageUrls(urls));
       } catch (error) {
@@ -136,12 +136,12 @@ const Menu = () => {
     const fetchCategoryImages = async () => {
       try {
         const response = await axios.get(
-          "https://qr-backend-application.onrender.com/categories/category"
+          "https://qr-backend-server.onrender.com/categories/category"
         );
         const categoryData = response.data.map((item) => ({
           categoryId: item.categoryId,
           categoryName: item.categoryName,
-          categoryUrl: `https://qr-backend-application.onrender.com/categories/image/${item.fileId}`,
+          categoryUrl: `https://qr-backend-server.onrender.com/categories/image/${item.fileId}`,
         }));
         dispatch(setCategoryImages(categoryData));
       } catch (error) {
@@ -152,12 +152,12 @@ const Menu = () => {
     const fetchFoodItemsImages = async () => {
       try {
         const response = await axios.get(
-          "https://qr-backend-application.onrender.com/menu/stocks"
+          "https://qr-backend-server.onrender.com/menu/stocks"
         );
         const foodItemsData = response.data;
         const urls = foodItemsData.map((item) => ({
           typeName: item.name,
-          typeImageUrl: `https://qr-backend-application.onrender.com/files/image/${item.imageId}`,
+          typeImageUrl: `https://qr-backend-server.onrender.com/files/image/${item.imageId}`,
           typePrice: item.price,
           categoryName: item.categoryName,
           typeId: item._id,
@@ -184,7 +184,7 @@ const Menu = () => {
     const fetchCombos = async () => {
       try {
         const response = await axios.get(
-          "https://qr-backend-application.onrender.com/combos/combo"
+          "https://qr-backend-server.onrender.com/combos/combo"
         );
         setCombos(response.data);
       } catch (error) {
@@ -604,7 +604,7 @@ const Menu = () => {
 
                               <div className="content-right">
                                 <img
-                                  src={`https://qr-backend-application.onrender.com/combos/image/${combo.comboImage}`}
+                                  src={`https://qr-backend-server.onrender.com/combos/image/${combo.comboImage}`}
                                   alt={combo.comboName}
                                   className="right-image"
                                 />

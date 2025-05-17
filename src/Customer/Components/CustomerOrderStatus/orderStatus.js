@@ -14,9 +14,9 @@ const OrderStatus = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       setLoading(true);
-      try {  
+      try {
         const response = await axios.get(
-          "https://qr-backend-application.onrender.com/cart/items"
+          "https://qr-backend-server.onrender.com/cart/items"
         );
         const cartItems = response.data;
 
@@ -82,7 +82,10 @@ const OrderStatus = () => {
                         <strong>Combo Items:</strong>
                         <ul>
                           {foodItem.items.map((comboItem, comboIndex) => (
-                            <li key={comboIndex} style={{ listStyleType: "none" }}>
+                            <li
+                              key={comboIndex}
+                              style={{ listStyleType: "none" }}
+                            >
                               {comboItem.name} - {comboItem.quantity}
                             </li>
                           ))}

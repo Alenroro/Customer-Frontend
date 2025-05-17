@@ -23,9 +23,9 @@ const AddToCart = () => {
     const fetchPostedItems = async () => {
       try {
         const response = await axios.get(
-          "https://qr-backend-application.onrender.com/cart/items"
+          "https://qr-backend-server.onrender.com/cart/items"
         );
-        setPostedItems(response.data.map((item) => item.name)); 
+        setPostedItems(response.data.map((item) => item.name));
       } catch (error) {
         console.error("Error fetching posted items: ", error);
       }
@@ -87,7 +87,7 @@ const AddToCart = () => {
 
     try {
       await axios.post(
-        "https://qr-backend-application.onrender.com/cart/cartitems",
+        "https://qr-backend-server.onrender.com/cart/cartitems",
         cartData
       );
       setModalIsOpen(true);
@@ -192,7 +192,6 @@ const AddToCart = () => {
           </p>
         </div>
         <div style={styles.finalizeContainer}>
-            
           <button
             style={styles.finalizeButton}
             onClick={handleFinalizeCart}
